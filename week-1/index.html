@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="output.css" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images//favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="images/favicon/" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>CSS</title>
+</head>
+
+<body class="pt-4 dark:bg-black dark:text-white grid-flow-dense">
+  <button>asds</button>
+  <a href="#themecheckbox"
+    class="fixed z-20 flex items-center justify-center w-10 h-10 bg-black rounded-full cursor-pointer bottom-8 right-4 dark:bg-white">
+    <svg class="w-3 dark:fill-black fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+      <path
+        d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+    </svg>
+  </a>
+  <input id="themecheckbox" class="sr-only" type="checkbox" id="theme" /><label
+    class="dark:border-white cursor-pointer theme dark:before:!bg-white ml-auto mr-2 block relative border-black rounded-2xl w-[5rem] border-2 h-[2.25rem]"
+    for="themecheckbox"><svg class="theme-dark dark:fill-white" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512">
+      <path
+        d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5L19.7 136.3c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4L256 450.9l82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1L375.7 19.7zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4L402 242.4c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3L269.6 402c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3L64.8 335.2 110 269.6c5.7-8.2 5.7-19 0-27.2L64.8 176.8l78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3L242.4 110c8.2 5.7 19 5.7 27.2 0zM256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224zM192 256a64 64 0 1 1 128 0 64 64 0 1 1 -128 0z" />
+    </svg><svg xmlns="http://www.w3.org/2000/svg" class="theme-ligth dark:fill-white" viewBox="0 0 384 512">
+      <path
+        d="M144.7 98.7c-21 34.1-33.1 74.3-33.1 117.3c0 98 62.8 181.4 150.4 211.7c-12.4 2.8-25.3 4.3-38.6 4.3C126.6 432 48 353.3 48 256c0-68.9 39.4-128.4 96.8-157.3zm62.1-66C91.1 41.2 0 137.9 0 256C0 379.7 100 480 223.5 480c47.8 0 92-15 128.4-40.6c1.9-1.3 3.7-2.7 5.5-4c4.8-3.6 9.4-7.4 13.9-11.4c2.7-2.4 5.3-4.8 7.9-7.3c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-3.7 .6-7.4 1.2-11.1 1.6c-5 .5-10.1 .9-15.3 1c-1.2 0-2.5 0-3.7 0c-.1 0-.2 0-.3 0c-96.8-.2-175.2-78.9-175.2-176c0-54.8 24.9-103.7 64.1-136c1-.9 2.1-1.7 3.2-2.6c4-3.2 8.2-6.2 12.5-9c3.1-2 6.3-4 9.6-5.8c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-3.6-.3-7.1-.5-10.7-.6c-2.7-.1-5.5-.1-8.2-.1c-3.3 0-6.5 .1-9.8 .2c-2.3 .1-4.6 .2-6.9 .4z" />
+    </svg></label>
+  <header>
+    <picture class="flex items-center justify-center dark:hidden">
+      <source media="(prefers-color-scheme: dark)" srcset="https://fontawesomeicons.com/lib/svg/logo-css3.svg" />
+      <img loading="lazy" class="object-contain w-[10%] min-w-[80px] dark:block"
+        src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS Logo" />
+    </picture>
+    <img loading="lazy" class="object-contain hidden mx-auto w-[9%] min-w-[80px] dark:block"
+      src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS Logo" />
+  </header>
+  <section class="section">
+    <article class="mb-4">
+      <h2 class="text-2xl font-bold">CSS Nedir?</h2>
+      <p class="leading-8 line-clamp-3">
+        CSS (Cascading Style Sheet) açılımı “Basamaklı Stil Sayfaları” anlamına gelen web sayfalarında <strong>
+          yazı tipi, renk, boyut, arka plan ve dokular
+        </strong> gibi ögelerde arzu edilen değişiklikleri tanımlamanızı sağlayan bir programlama dilidir.
+      </p>
+    </article>
+    <article>
+      <h2 class="text-2xl font-bold">Float</h2>
+      <p class="leading-8">
+        <picture class="float-right w-[200px] ml-2 mb-2"><img loading="lazy" class="object-cover"
+            src="https://picsum.photos/400" alt="Lorem Picsum" /></picture>CSS float özelliği web sayfalarında
+        konulandırma ve düzen için
+        kullanılır. Bir öğenin sayfa akışı içinde hangi yöne yaslanması
+        gerektiğini ifade eder. Ancak bunu yaparken öğelerin görüntülenme
+        varsayılanlarını (blok veya satır içi) etkiler, sayfa akışını
+        değiştirir. Bir HTML öğesi float özelliği aldığında, öğeyi sayfa
+        akışından çıkarır. Diğer öğeler ise float uygulanan öğenin varlığını
+        görerek etrafından akışına devam eder. Bu çok yönlü çalışma şekli
+        sayesinde oldukça fazla kullanım şekli ve alanı vardır. Alabileceği
+        dört farklı değer vardır; left, right, none, inherit Bu örnek float
+        kullanılarak yapılmıştır
+      </p>
+    </article>
+  </section>
+  <section class="clear-right section">
+    <article class="mb-4">
+      <h2 class="text-2xl font-bold">FlexBox</h2>
+      <p class="leading-8">
+        Kısaca flexbox olarak ifade edebileceğimiz CSS Esnek Kutu Düzeni, bir
+        CSS3 web düzeni (layout) modelidir. CSS Flexible Box Layout Module
+        Level 1 W3C‘nin aday öneri (Candidate Recommendation State)
+        aşamasındaki bir geliştirmedir.Flexbox, temel olarak 2 boyutlu bir
+        hareket alanı içerisinde duyarlı (responsive) elementlerin ekran
+        boyutuna (screen size) veya cihaza (device) bağlı olarak otomatik
+        olarak düzenlenmesini sağlar.
+      </p>
+    </article>
+    <ol class="flex flex-col gap-8 ml-2 list-none">
+      <li>
+        <span>Flex Özellikleri</span> <img loading="lazy" class="image" src="images/flex.png" alt="Flex" />
+      </li>
+      <li>
+        <span>Justify-content</span>
+        <span>Bu özellik içindeki elemanların main-axis de hizalamaya
+          yarar.</span><img loading="lazy" class="image" src="images/Flex-Justify.png" alt="Flex-Content" />
+      </li>
+      <li>
+        <span>Center</span>
+        <div class="justify-center py-1 border-black flex-wrapper dark:border-white">
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+        </div>
+      </li>
+      <li>
+        <span>Space-Evenly</span><span>Tüm öğelerin arası aynı eşitlikte olacak şekilde hizalar.</span>
+        <div class="py-1 border-black flex-wrapper dark:border-white justify dark:border-white-evenly">
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+        </div>
+      </li>
+      <li>
+        <span>Space-Around</span><span>İlk ve son öğe hariç diğerlerinin arası eşit olacak şekilde
+          hizalar.</span>
+        <div class="justify-around py-1 border-black flex-wrapper dark:border-white">
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+        </div>
+      </li>
+      <li>
+        <span>Space-Between</span><span>İlk öğe sola dayalı, son öğe sağa dayalı ve diğerleri ortalı olacak
+          şekilde hizalar.</span>
+        <div class="justify-between py-1 border-black flex-wrapper dark:border-white">
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+        </div>
+      </li>
+      <li>
+        <span>Flex-Direction</span><span>Öğelerin yönünü belirlemek için kullanılır. Varsayılan olarak flex
+          container yataya doğru uzar. Dolayısı ile bu kapsayıcı içindeki tüm
+          öğeler yan yana listelenir.</span><img loading="lazy" class="image" src="images/Direction.png"
+          alt="Flex-Direction" />
+      </li>
+      <li>
+        <span>Flex-Column</span>
+        <div class="flex-col gap-1 py-1 border-black flex-wrapper dark:border-white">
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+        </div>
+      </li>
+      <li>
+        <span>Align-Items</span>
+        <span>Elemanların dikeyde hizalamaya yarar aslında main-axis hangisi belirlenmişse ona dik olacak şekilde
+          hizalar.Mesela <strong>flex-direction:column</strong> özelliği varsa main-axis x ekseni olmaktan çıkıp y
+          ekseni olacak ve <strong>align-items</strong> özelliği x ekseninde hizalama yapacak</span>
+      </li>
+
+      <li>
+        <span>Center</span>
+        <div class="flex-wrapper dark:border-white py-1 border-black items-center gap-1 h-[20vh]">
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-12 bg-black dark:bg-white"></p>
+          <p class="w-10 bg-black h-14 dark:bg-white"></p>
+        </div>
+      </li>
+
+      <li>
+        <span>flex-start</span>
+        <div class="w-full dark:border-white py-1 border-black border-2 flex items-start gap-1 h-[20vh]">
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-12 bg-black dark:bg-white"></p>
+          <p class="w-10 bg-black h-14 dark:bg-white"></p>
+        </div>
+      </li>
+
+      <li>
+        <span>flex-end</span>
+        <div class="flex-wrapper dark:border-white py-1 border-black items-end gap-1 h-[20vh]">
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-12 bg-black dark:bg-white"></p>
+          <p class="w-10 bg-black h-14 dark:bg-white"></p>
+        </div>
+      </li>
+
+      <li>
+        <span>flex-baseline</span>
+        <div class="flex-wrapper dark:border-white py-1 border-black items-baseline gap-1 h-[20vh]">
+          <p class="w-10 h-10 bg-black dark:bg-white"></p>
+          <p class="w-10 h-12 bg-black dark:bg-white"></p>
+          <p class="w-10 bg-black h-14 dark:bg-white"></p>
+        </div>
+      </li>
+      <li>
+        <span>flex-stretch</span>
+        <div class="flex-wrapper dark:border-white py-1 border-black items-stretch gap-1 h-[20vh]">
+          <p class="w-10 bg-black dark:bg-white"></p>
+          <p class="w-10 bg-black dark:bg-white"></p>
+          <p class="w-10 bg-black dark:bg-white"></p>
+        </div>
+      </li>
+      <li>
+        <span>Flex-Grow</span>
+        <span>Bir öğeyi diğerlerine göre daha büyük göstermek için bu özelliği kullanıyoruz</span>
+        <div class="w-full dark:border-white p-4 border-black border-2 flex gap-1 h-[20vh]">
+          <p class="grid content-center w-10 text-center text-white bg-black grow dark:bg-white dark:text-black">
+            Growed
+            Item</p>
+          <p class="grid content-center w-10 text-center text-white bg-black dark:bg-white dark:text-black">Item</p>
+          <p class="grid content-center w-10 text-center text-white bg-black dark:bg-white dark:text-black">Item</p>
+        </div>
+      </li>
+      <li>
+        <span>Flex-Shrink</span>
+        <span>Bu aslında flex-grow özelliğinin tam aksine, <strong>küçültme</strong> işlemi için kullanılır</span>
+        <div class="resize-x overflow-x-auto dark:border-white p-4 border-black border-2 flex gap-1 h-[20vh]">
+          <p class="grid content-center w-40 text-center text-white bg-black shrink dark:bg-white dark:text-black">
+            Shrink
+            Item</p>
+          <p class="grid content-center w-40 text-center text-white bg-black shrink-0 dark:bg-white dark:text-black">
+            Item
+          </p>
+          <p class="grid content-center w-40 text-center text-white bg-black shrink-0 dark:bg-white dark:text-black">
+            Item
+          </p>
+        </div>
+      </li>
+    </ol>
+  </section>
+  <section class="section">
+    <article class="mb-4">
+      <h2 class="text-2xl font-bold">Grid</h2>
+      <p class="leading-8">
+        Grid, webin iskelet yapısını oluşturur. Temelde Row(satır) ve Column(sütun) olarak adlandırılan yatay ve dikey
+        kılavuz çizgilerden oluşuyor. Bu çizgileri referans alarak web içinde kullanılacak elementlerin yerleşimi
+        sağlanıyor.
+      </p>
+    </article>
+    <ol class="flex flex-col gap-8 ml-2 list-none">
+      <li>
+        <span>Grid özelliği</span><img loading="lazy" class="image" src="images/Grid.png" alt="Grid" />
+      </li>
+
+      <li class="cursor-pointer" id="modal">
+        <span>Justify Items</span>
+        <img loading="lazy" class="object-contain w-[70%] min-w[300px]"
+          src="https://miro.medium.com/v2/resize:fit:1400/1*Inrvv5M2sSHpPZeRPGXdMg.gif" alt="Alignment"
+          role="presentation" loading="lazy">
+      </li>
+      <li class="cursor-pointer" id="modal">
+        <span>Align Items</span>
+        <img loading="lazy" class="object-contain w-[70%] min-w[300px]"
+          src="https://miro.medium.com/v2/resize:fit:1400/1*Wtfu0kHDrhRTmjTniWyo2Q.gif" alt="Justify"
+          role="presentation" loading="lazy">
+      </li>
+      <li class="cursor-pointer" id="modal">
+        <span>Align Track</span>
+        <img loading="lazy" class="object-contain w-[70%] min-w[300px]"
+          src="https://miro.medium.com/v2/resize:fit:1400/1*SBk1aL8xlOqbTjdSTt9JLQ.gif" alt="Justify"
+          role="presentation" loading="lazy">
+      </li>
+  </section>
+  <script src="script.js"></script>
+</body>
+
+</html>

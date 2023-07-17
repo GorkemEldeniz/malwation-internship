@@ -1,0 +1,25 @@
+{
+  "name": "malwation-internship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx tailwindcss -i  index.css -o output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GorkemEldeniz/malwation-internship.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GorkemEldeniz/malwation-internship/issues"
+  },
+  "homepage": "https://github.com/GorkemEldeniz/malwation-internship#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  }
+}

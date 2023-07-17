@@ -1,0 +1,11 @@
+* https://www.hosting.com.tr
+* https://www.milleni.com.tr/
+* https://medium.com/@kahil_kubilay
+* https://www.w3schools.com/
+* https://developer.mozilla.org/
+* https://coderspace.io/
+* https://medium.com/nafidurmus/
+* https://stackoverflow.com/
+* https://medium.com/devopsturkiye
+* https://ata.com.tr/blog-detay/css-flexbox-nedir-nasil-kullanilir-239
+* https://medium.com/@busramemis/css-grid-layout-ca9035b942f6
