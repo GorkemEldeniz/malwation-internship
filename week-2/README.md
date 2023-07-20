@@ -84,19 +84,19 @@ JS Best Practice
     * ```js
         //Kötü örnek
         for(let i = 0; i < someArray.length; i++) {
-        let container = document.getElementById('container');
-        container.innerHtml += 'my number: ' + i;
-        console.log(i);
+          let container = document.getElementById('container');
+          container.innerHtml += 'my number: ' + i;
+          console.log(i);
         }
         //İyi Örnek
         let container = document.getElementById('container');
         for(let i = 0, len = someArray.length; i < len;  i++) {
           container.innerHtml += 'my number: ' + i;
           console.log(i);
-        }
+          }
       ``` 
   * Global Tanımlamaları azalt
-    * Global atamalar tarayıcıda window objesine tanımlanıyor bazı durumlarda önden tanımlı methodları istemeden override edilebilinir.
+    * Sadece spesifik işlevleri olan fonksiyonları obje şeklinde tanımla 
     * ```js
         //Kötü örnek
         let name = 'Jeffrey';
@@ -173,7 +173,7 @@ Bir array'i koplayamak/klonlamak
 
 * Object klonlama/kopyalama  
     * ![clone-object](images/Ekran%20Resmi%202023-07-20%2013.22.27.png)
-    
+
     * kullanılan deepclone fonksiyonu
   ```javascript
   function deepCopy(o) {
@@ -193,10 +193,74 @@ Bir array'i koplayamak/klonlamak
     return newO;
   }
 
-  function x(clone, obj) {
+  function nestedObjectClone(clone, obj) {
     for (var i in obj)
       clone[i] =
         typeof obj[i] == "object" ? x(obj[i].constructor(), obj[i]) : obj[i];
     return clone;
   }
-   ```  
+  ```  
+## Javascript Gelişimi
+
+JS Tarihçesi yazımda Javascript’in gelişimi hakkında konuşurken Node ile JavaScript’in sadece tarayıcı içerisinde değilde, Sunucu, Desktop, Mobil ve iOT cihazlarında çalışabilir hale gelmesinden bahsetmiştim. Bu değişim geliştireceğimiz uygulamaların büyüklüklerini veya gereksinimlerini değiştirmiştir.
+
+JS ile daha büyük proje geliştirme ihtiyacı, daha büyük ekipleri oluşturmayı ve beraber çalışabilmelerini zorunlu hale getirmiştir.
+
+Bunun için işi soyutlamak(abstraction), parçalara ayırmak(module) ve birbirinin rahat bir şekilde kullanımına(composition) sunabilmeniz gerekiyor.
+
+JS Modüllerindeki gelişim bunu (IIFE →CJS→AMD →ES6) sağlamıştır. Node gelişimi ile birlikte geliştirilen modüllerin bir Repo da toplanıp rahatça indirilebilmesi için NPM geliştirilmiştir.
+
+Peki bu Node modüllerini sadece Sunucu tarafında mı kullanacağız? Frontend geliştiricileri de bu kütüphanelerden nasıl faydalanabilir. Browserify , Webpack gibi araçlar çıkmış, Babel sayesinde burdaki Tarayıcı uyumsuzlukları Babel dönüştürücüsü ile çözülmeye başlanmıştır.
+
+Webpack, Babel, SCSS vb.. preprocessor yapıları Pandora’nın kutusunu açmıştır. Biz geliştiriciler artık tarayıcının anladığı JS ve CSS seviyesinde kod yazmak zorunda kalmayacaktık. Bu gelişim aslında eskiden yaşanan bir gelişimin benzeri;
+
+Bu özellikler şimdi JS ekosisteminde var oluyor. , Typescript, Sass dilleri kullanılabilir hale geldik. React projelerinde yer alan JSX kullanımı da bu Preprocessor sayesinde aslında arka planda React API dönüştürülerek çağrımları gerçekleştirir. Bu sayede geliştiricilerin Imperative API kullanma detaylarından soyutlayarak Declarative tanımla **<MyComp>** çok daha hızlı kod geliştirilebilir bir hale getirmiştir.
+
+## Typescript Ortaya Çıkışı  
+
+Büyük projelerde herkesin bu dikkati gösterMemesi, projeye sonradan dahil olan, veya JS konularına hakim olmayan geliştiricilerin projede oluşturabilecekleri hataları minimize etmek için TypeScript gibi Type güvenliği sağlayan diller kullanırız.
+
+Bundan dolayı araya bir katman daha koyarak geliştirdiğimiz kodumuzun transpile edilmesi ve yazdığımız JS kodlarında oluşacak hataları daha öncesinden tespit etmiş oluruz. Bu aşamada JS dışındaki dilleri → JS diline dönüştürecek ara transpiler ihtiyaç bulunur. Bunlardan bazıları;
+
+## Dönüştürücü (Compiler, Transpiler Kavramları)
+
+Dönüştürücüleri compiler , bazende transpiler ile adlandırıyoruz. Aslında Typscript, Babel, Sass gibi dönüştürülere Transpiler deniliyor. Bunun nedeni birbirine yakın seviyedeki dillerin bir birine dönüştürülmesi yani TypeScript → EcmaScript(JS) çıktısını geliştirici aynı şekilde okuyup anlayabildiği için bu tarz dönüştürücülere Source-to-Source Compiler deniliyor.
+
+![Şema](https://media.geeksforgeeks.org/wp-content/uploads/20220406145111/TypeScriptCompilation.JPG)
+
+Typescript Kullanmanın Faydaları
+
+Derleme: Özelliklerinde bahsettiğim gibi JavaScript yorumlamalı(interpreted) bir dildir, derleme aşaması yoktur, bu nedenle kod çalışana dek hata tespiti yapılamaz ve hata varsa tüm kodun gözden geçirilmesi gerekir ve bu çok zaman alabilir. TypeScript dönüştürücüsü derleme aşamasında hata denetimi sağlar ve bu soruna çözüm getirir.
+Daha iyi kod yapılandırması ve nesneye yönelik programlama teknikleri içerir.Javascript diline göre daha kolay okunabilir ve düzenlenebilir bir dil olan TypeScript, nesne yönelimli yapıya sahiptir. Sınıflar, modüller, arayüzler gibi özellikleri destekler.
+JavaScript koduna göre sağladığı en büyük avantajlardan bir diğeride kolay okunabilir ve düzenlenebilir bir dildir.
+
+
+TypeScript ve JavaScript Arasında Farklar Nelerdir?
+
+TypeScript statik veri tipine sahiptir, JavaScript ise dinamik veri tipine sahiptir.
+TypeScript ile JavaScript olarak tasarlanmış büyük ve karmaşık projelerin geliştirme aşaması çok daha kısa sürelere indirilebilir ve müdahalede edilebilir.
+TypeScript nesne yönelimli program dildir, JavaScript ise betik dildir.
+
+![typescript-javascript](https://dunebook.com/wp-content/uploads/2017/03/Typescript-and-the-Javascript-code.jpg)
+
+Typescript Best Practise
+
+* Dogru veri tiplerini kullan mümkün olduğunca **any** den kaçın
+* typescript config dosyasından **strict** modu aktifleştirerek kullan
+    * Strict Mode (kısaca SM) EsmaScript 5 ile birlikte duyurulan ve JavaScript’deki esnek yazım biçimini ortadan kaldıran yeni bir özelliktir. Bu özelliği kullanarak yazılan JavaScript kodunun bütün yorumlayıcılarda aynı şekilde yorumlanması hedeflenmiştir.
+    * ![strictMode](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*6NNYdRlo1spH1-71XtuGSg.png)
+
+* Sabit elemanlı diziler için tuple tip atamasını kullan
+    * ```ts
+        let marks: number[] = [1, 2, 3];
+        // sabit değişkenler
+        let marks:[number, number] = [1, 2]; 
+      ``` 
+* Tekrar eden veri tiplerinde mutlaka atama yap
+    * ```ts
+        type Details = {name: string, age: number};
+        let man: Details = {name = "john", age=30};
+        let woman: Details = {name = "Anne", age=32};
+      ```
+* ESLint Airbnb gibi linterlar kullanılabilir
+* Prettier gibi code formatterlar kullanılabilir
