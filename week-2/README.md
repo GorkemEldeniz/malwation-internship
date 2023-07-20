@@ -50,16 +50,131 @@ programcıların yazdıkları kodu daha kolay hatırlamak, kodun okunuşunu kola
   }
 ```
 
+JS Best Practice
+
+*  == **Yerine** === **Kullan**
+    * == type converting yaptığı için hatalara yol açabilir
+* Kısaltmaları kullanma
+    * ```js
+      // bu kodun karşılığı
+      if (someVariableExists)
+        x = false
+        anotherFunctionCall();
+      // bu örnek değil
+      if (someVariableExists){
+        x = false
+        anotherFunctionCall();
+      }
+      //Budur
+      if (someVariableExists){
+        x = false
+      }
+      anotherFunctionCall();
+      ```
+    * Kısaltmalar sadece tek satırlık kod bloklarında kullanılması daha uygundur
+    * ```js
+      // Bunun yerine
+        if(2 + 2 === 4){
+          return 'nicely done';
+        }
+      // Bu kullanılabilir  
+        if(2 + 2 === 4) return 'nicely done';
+      ```  
+  * Döngü içinde gereksiz atamalardan kaçınılmalı
+    * ```js
+        //Kötü örnek
+        for(let i = 0; i < someArray.length; i++) {
+        let container = document.getElementById('container');
+        container.innerHtml += 'my number: ' + i;
+        console.log(i);
+        }
+        //İyi Örnek
+        let container = document.getElementById('container');
+        for(let i = 0, len = someArray.length; i < len;  i++) {
+          container.innerHtml += 'my number: ' + i;
+          console.log(i);
+        }
+      ``` 
+  * Global Tanımlamaları azalt
+    * Global atamalar tarayıcıda window objesine tanımlanıyor bazı durumlarda önden tanımlı methodları istemeden override edilebilinir.
+    * ```js
+        //Kötü örnek
+        let name = 'Jeffrey';
+        let lastName = 'Way';
+        function doSomething() {...}
+        console.log(name); // Jeffrey -- or window.name
+
+        //İyi örnek
+        let DudeNameSpace = {
+          name : 'Jeffrey',
+          lastName : 'Way',
+          doSomething : function() {...}
+        }
+        console.log(DudeNameSpace.name);
+      ```
+  * Yorum satırların iyi kullanmak
+    * gereksiz yorumlardan kaçınmak ve ihtiyaç duyulan yerlerde kullanmak
+
+  * new Object() **Yerine** {} **Kullan**
+    * Bir zararı yok ama okunaklığı açısında genellikle object literal tercih edilir
+    * ```js
+      //Kötü örnek
+      var o = new Object();
+        o.name = 'Jeffrey';
+        o.lastName = 'Way';
+        o.someFunction = function() {
+          console.log(this.name);
+        }
+      //İyi Örnek
+      var o = {
+        name: 'Jeffrey',
+        lastName = 'Way',
+        someFunction : function() {
+            console.log(this.name);
+        }
+        };
+      ```      
+  * for ... in kullanırken dikkat et
+    * ```js
+      // kontrol et
+      for (key in object) {
+        if(object.hasOwnProperty(key)) {
+          //...then do something...
+        }
+      }
+      ```
+  * İhtiyaç olmadıkça kütüphane kullanma
+    * jQuery,lodash gibi kütüphanelerdeki methodlar çok kullanışlı olabilirler ama bazılarını sadece js kullanarak da yazabilirsin      
+
+  * Okunaklılık açısından **arrow fonksiyonlarını** kullanabilirsin
+    * ```js
+      //Kötü Örnek
+      const nums = [1,2,3,4,5,6,7,8];
+      const even_nums = nums.filter( function (num) { return num%2 == 0; } )
+      
+      //İyi Örnek
+      const even_nums = nums.filter(num => num%2 == 0)
+      ```
+  * Birden çok promiseleri **Promise.all()** fonksiyonunu kullanarak paralel bir şekilde çalıştırabilirsin
+
+  * ```js
+      const urls = ["https://en.wikipedia.org/wiki/Canada", "https://en.wikipedia.org/wiki/Nigeria", "https://en.wikipedia.org/wiki/Vietnam"]
+      const countryInfo = await Promise.all(urls.map( async url => {
+        const resp = await fetch(url);
+        return resp.text();
+      }));
+    ```    
 Performans Testleri
 
 Bir array'i koplayamak/klonlamak
 * Test Sonucları
 * Array klonlama/kopyalama
-  * ![clone-array](images/Ekran%20Resmi%202023-07-20%2013.02.05.png)
+    * ![clone-array](images/Ekran%20Resmi%202023-07-20%2013.02.05.png)
 
 * Object klonlama/kopyalama  
-  * ![clone-object](images/Ekran%20Resmi%202023-07-20%2013.22.27.png)
-  * kullanılan deepclone fonksiyonu
+    * ![clone-object](images/Ekran%20Resmi%202023-07-20%2013.22.27.png)
+    
+    * kullanılan deepclone fonksiyonu
   ```javascript
   function deepCopy(o) {
     // if not array or object or is null return self
@@ -84,4 +199,4 @@ Bir array'i koplayamak/klonlamak
         typeof obj[i] == "object" ? x(obj[i].constructor(), obj[i]) : obj[i];
     return clone;
   }
-   ```
+   ```  
