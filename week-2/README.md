@@ -2,7 +2,7 @@
 
 Javascript Nedir?
 
-JavaScript, geliştiricilerin etkileşimli web sayfaları oluşturmak için kullandığı bir programlama dilidir. JavaScript işlevleri, sosyal medya akışlarını yenilemekten animasyonlar ve etkileşimli haritalar göstermeye kadar, bir web sitesi kullanıcısının deneyimini iyileştirebilir. İstemci tarafındaki bir betik dili olarak, World Wide Web'in temel teknolojilerinden biridir. Örneğin, internette gezinirken bir görsel döngüsü, görmek için tıkla açılır menüsü ya da bir web sayfasında dinamik olarak değişen öğe renkleri gördüğünüzde JavaScript efektlerini görmüş olursunuz.
+JavaScript, geliştiricilerin etkileşimli web sayfaları oluşturmak için kullandığı bir programlama dilidir. JavaScript işlevleri, sosyal medya akışlarını yenilemekten animasyonlar ve etkileşimli haritalar göstermeye kadar, bir web sitesi kullanıcısının deneyimini iyileştirebilir. İstemci tarafındaki bir betik dili olarak, World Wide Web'in temel teknolojilerinden biridir.
 
 
 Javascript OOP Yapısı
@@ -218,7 +218,7 @@ Bu özellikler şimdi JS ekosisteminde var oluyor. , Typescript, Sass dilleri ku
 
 ## Typescript Ortaya Çıkışı  
 
-Büyük projelerde herkesin bu dikkati gösterMemesi, projeye sonradan dahil olan, veya JS konularına hakim olmayan geliştiricilerin projede oluşturabilecekleri hataları minimize etmek için TypeScript gibi Type güvenliği sağlayan diller kullanırız.
+Büyük projelerde herkesin bu dikkati göstermemesi, projeye sonradan dahil olan, veya JS konularına hakim olmayan geliştiricilerin projede oluşturabilecekleri hataları minimize etmek için TypeScript gibi Type güvenliği sağlayan diller kullanılır.
 
 Bundan dolayı araya bir katman daha koyarak geliştirdiğimiz kodumuzun transpile edilmesi ve yazdığımız JS kodlarında oluşacak hataları daha öncesinden tespit etmiş oluruz. Bu aşamada JS dışındaki dilleri → JS diline dönüştürecek ara transpiler ihtiyaç bulunur. Bunlardan bazıları;
 
@@ -230,7 +230,7 @@ Dönüştürücüleri compiler , bazende transpiler ile adlandırıyoruz. Aslın
 
 Typescript Kullanmanın Faydaları
 
-Derleme: Özelliklerinde bahsettiğim gibi JavaScript yorumlamalı(interpreted) bir dildir, derleme aşaması yoktur, bu nedenle kod çalışana dek hata tespiti yapılamaz ve hata varsa tüm kodun gözden geçirilmesi gerekir ve bu çok zaman alabilir. TypeScript dönüştürücüsü derleme aşamasında hata denetimi sağlar ve bu soruna çözüm getirir.
+Derleme: JavaScript yorumlamalı(interpreted) bir dildir, derleme aşaması yoktur, bu nedenle kod çalışana dek hata tespiti yapılamaz ve hata varsa tüm kodun gözden geçirilmesi gerekir ve bu çok zaman alabilir. TypeScript dönüştürücüsü derleme aşamasında hata denetimi sağlar ve bu soruna çözüm getirir.
 Daha iyi kod yapılandırması ve nesneye yönelik programlama teknikleri içerir.Javascript diline göre daha kolay okunabilir ve düzenlenebilir bir dil olan TypeScript, nesne yönelimli yapıya sahiptir. Sınıflar, modüller, arayüzler gibi özellikleri destekler.
 JavaScript koduna göre sağladığı en büyük avantajlardan bir diğeride kolay okunabilir ve düzenlenebilir bir dildir.
 
@@ -249,7 +249,6 @@ Typescript Best Practise
 * typescript config dosyasından **strict** modu aktifleştirerek kullan
     * Strict Mode (kısaca SM) EsmaScript 5 ile birlikte duyurulan ve JavaScript’deki esnek yazım biçimini ortadan kaldıran yeni bir özelliktir. Bu özelliği kullanarak yazılan JavaScript kodunun bütün yorumlayıcılarda aynı şekilde yorumlanması hedeflenmiştir.
     * ![strictMode](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*6NNYdRlo1spH1-71XtuGSg.png)
-
 * Sabit elemanlı diziler için tuple tip atamasını kullan
     * ```ts
         let marks: number[] = [1, 2, 3];
@@ -264,3 +263,159 @@ Typescript Best Practise
       ```
 * ESLint Airbnb gibi linterlar kullanılabilir
 * Prettier gibi code formatterlar kullanılabilir
+
+Map Nedir?
+
+Map anahtar ve değer ikilisini tutan ve değerlerin eklenme sırasını hatırlayan bir JavaScript nesnesidir. Normal bir nesneden farklı olarak anahtar için herhangi bir veri tipi kullanılabilir. String ile sınırlı değildir.
+
+```js
+  const scores = new Map()
+  
+  scores.set('John',20) // Map(1) {'John' => 20}
+
+  scores.get('John') // 20
+
+  scores.has('John') // true
+
+  scores.size // 1
+
+  scores.delete('John') // true döner ve ilgili key'i siler
+
+  scores.clear() // bütün verileri siler
+
+  // Obje ve dizileri Map'e dönüştürebilirsiniz
+  // Map degerleri [[key,value]] şeklinde alır
+
+  const familyScores = {
+    'Jane' : 50,
+    'Micheal' : 20
+  }
+  // const scoresMap = new Map([['Jane',50],['Micheal'],20])
+  const scoresMap = new Map(Object.entries(familyScores)) 
+  
+  
+  let john = { name: 'John Doe' },
+  lily = { name: 'Lily Bush' },
+  peter = { name: 'Peter Drucker' };
+
+  let userRoles = new Map([
+    [john, 'admin'],
+    [lily, 'editor'],
+    [peter, 'subscriber'],
+  ]);
+
+  // values özelliği de aynı şekilde çalışmakta
+  for (const user of userRoles.keys()) {
+    console.log(user.name);// John Doe | Lily Bush | Peter Drcuker
+  }
+
+  let john = { name: 'John Doe' },
+  lily = { name: 'Lily Bush' },
+  peter = { name: 'Peter Drucker' };
+
+let userRoles = new Map([
+  [john, 'admin'],
+  [lily, 'editor'],
+  [peter, 'subscriber'],
+]);
+
+// callbackteki ilk parametre value ikincisi key olarak iterate ediliyor!
+userRoles.forEach((role, user) => console.log(`${user.name}: ${role}`));
+```
+
+Object ve Map Karşılaştırması
+
+* Map nesneleri sadece ona eklenen anahtarları içerir, anahtarlarınızla çakışacak prototip’in den gelen varsayılan anahtarları bulunmaz
+
+* Objeler sadece String ve Symbol veri tiplerinde anahtarlar içerebilirken, Map nesneleri herhangi bir veri tipinde anahtar içerebilir.
+
+* Map nesnelerinde anahtarlar eklenme sıralarını korurlar. Objeler için bu hep böyle değildi ve bu sıraya güvenmemek daha iyidir.
+
+* Performans konusunda anahtar değer çiflerinin eklenme sıklığına göre Map nesnesi daha performanslıdır. Bir obje bunun için bir optimizasyon içermez
+
+Set Nedir?
+
+Set benzersiz değerleri tutan bir JavaScript nesnesidir. Her veri tipinde değer tutabilir. Fakat aynı değeri birden fazla kez içeremez.
+
+```js
+  // set objesi oluşturma
+  const userIDs = new Set();
+
+  // ekleme
+  userIDs.add(1) // Set(1) {1}
+
+  userIDs.has(1) // true  
+
+  userIDs.size // 1
+
+  userIDs.delete(1) // true
+
+  // arrayi set objesine dönüştürme
+  const arr = [1,2,3,4,4,5]
+
+  // tekrar eden degerleri almayacak
+  new postIDs = new Set(arr); // {1,2,3,4,5}
+
+  // obje ekleyelim
+  userIDs.add({
+    name : 'John'
+  })
+  // ve sonra aynı objeyi tekrar ekleyelim
+  userIDs.add({
+    name : 'John'
+  })
+  //beklenilen davranış ekleme işlemini yapmaması ama objelerde değer olarak bire bir olasalar bile referansları farkı olduğunda farklı elemanlar olarak gözükür bu yüzden aynı set objesine ekleme yapılabilir.
+
+  // set objeleri iterate edilebilirler
+  let set = new Set(["portakal", "elma", "muz"]);
+
+  for(let value of set) console.log(value);
+
+  // forEach ile de aynı şekilde:
+  set.forEach((value, valueAgain, set) => {
+    console.log(value);
+  });
+  //keys | values | entries methodları vardır
+```
+
+Weak Map,Set Nedir?
+
+**Weakset**, JavaScript’in WeakSet’teki ögeleri bellekten kaldırmasını engellemeyen özel bir tür Set dir. **WeakMap** de Map için aynı şeydir.
+
+Çöp Toplama ( Garbage collection ) konusundan bildiğimiz üzere, JavaScript motoru bir değeri ona erişebildiği(ve potansiyel olarak kullanılabildiği) sürece bellekte tutar.
+
+```js
+  let john = { name: "John" };
+
+  let map = new Map();
+  map.set(john, "...");
+
+  john = null; // referansın üzerine yazalım (overwrite)
+
+  // john map içinde tutuldu
+  // map.keys() kullanarak ona ulaşabiliriz
+
+  // aynı örneği weak map ile yapalım
+  let john = { name: "John" };
+
+  let weakmap = new WeakMap();
+  map.set(john, "...");
+
+  john = null;
+
+  console.log(weakmap); // WeakMap(0) <= john objesi silinmiştir.
+```
+
+### Kaynaklar
+
+* [enescetinkaya162](https://medium.com/@enescetinkaya162/javascript-constructor-ve-prototype-nedir-3d043535f250)
+* [sophiali.dev](https://sophiali.dev/syntactic-sugar-examples-javascript)
+* [amazon](https://aws.amazon.com/tr/what-is/javascript/)
+* [jsben](https://jsben.ch/wQ9RU)
+* [code.tutsplus](https://code.tutsplus.com/24-javascript-best-practices-for-beginners--net-5399t)
+* [medium](https://medium.com/frontend-development-with-js/typescript-nedir-7e7290f699b)
+* [plusclouds](https://plusclouds.com.tr/blog/typescript-nedir-bize-sagladigi-avantajlar-nelerdir)
+* [haydarcan](https://haydarcan.com/javascript-strict-mode-nedir/#:~:text=Strict%20Mode%20(k%C4%B1saca%20SM)%20EsmaScript,yorumlay%C4%B1c%C4%B1larda%20ayn%C4%B1%20%C5%9Fekilde%20yorumlanmas%C4%B1%20hedeflenmi%C5%9Ftir.)
+* [aykutkardas](https://aykutkardas.medium.com/map-s%C4%B1n%C4%B1f%C4%B1-nedir-javascript-d5c7b1299975#:~:text=Map%20anahtar%20ve%20de%C4%9Fer%20ikilisini%20tutan%20ve%20de%C4%9Ferlerin%20eklenme%20s%C4%B1ras%C4%B1n%C4%B1,etmek%20i%C3%A7in%20sameValueZero%20algoritmas%C4%B1n%C4%B1%20kullan%C4%B1r.)
+* [javascripttutorial](https://www.javascripttutorial.net/es6/javascript-map/)
+* [javascript.info](https://tr.javascript.info/map-set-weakmap-weakset#weakmap-and-weakset)

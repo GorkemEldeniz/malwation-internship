@@ -6,3 +6,6 @@
 * https://medium.com/frontend-development-with-js/typescript-nedir-7e7290f699b
 * https://plusclouds.com.tr/blog/typescript-nedir-bize-sagladigi-avantajlar-nelerdir
 * https://haydarcan.com/javascript-strict-mode-nedir/#:~:text=Strict%20Mode%20(k%C4%B1saca%20SM)%20EsmaScript,yorumlay%C4%B1c%C4%B1larda%20ayn%C4%B1%20%C5%9Fekilde%20yorumlanmas%C4%B1%20hedeflenmi%C5%9Ftir.
+* https://aykutkardas.medium.com/map-s%C4%B1n%C4%B1f%C4%B1-nedir-javascript-d5c7b1299975#:~:text=Map%20anahtar%20ve%20de%C4%9Fer%20ikilisini%20tutan%20ve%20de%C4%9Ferlerin%20eklenme%20s%C4%B1ras%C4%B1n%C4%B1,etmek%20i%C3%A7in%20sameValueZero%20algoritmas%C4%B1n%C4%B1%20kullan%C4%B1r.
+* https://www.javascripttutorial.net/es6/javascript-map/
+* https://tr.javascript.info/map-set-weakmap-weakset#weakmap-and-weakset
