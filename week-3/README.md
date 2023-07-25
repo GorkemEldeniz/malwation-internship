@@ -241,4 +241,10 @@ Custom react createElement Function
 
 Virtual DOM Ve React
 
+Virtual DOM Real yani gerçek DOM’ un bellekteki kopyasıdır.
 
+Virtual DOM üzerinde document objelerimiz anahtar-değer yani bilindiği üzere key-value değerleri olarak saklanmaktadır. Yani bellekte aynı anda hem real dom hem de virtual dom bulunmaktadır. Burada virtual dom’ un artısı, bizim verilerimizde bir güncelleme olduğunda bu değişiklik sayfalarımıza da anında yansıyacak ve kullanıcılar bu değişiklikleri anında görecekler. Yani performans açısından değerlendirirsek oldukça başarılı.
+
+Nedir peki bu algoritmalar? React kendi diff algoritmasını kullanıyor. Bu algoritma devreye girdiğinde hangi objede değişiklik var ya da yok belli oluyor. Değişiklik bulunan yerde, bulunan değişiklikler stateler üzerinde gerçekleşiyor ve bu diff algoritmaları değişen state’ i bulup tek o state’ in bulunduğu componenti render ediyor.
+
+![react-algorithm](https://miro.medium.com/v2/resize:fit:720/format:webp/1*ibs4RelQqQVltqVKmKHkDw.jpeg)
