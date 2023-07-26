@@ -172,7 +172,7 @@ JSX ile class yapısındaki kullanım
 	}
 ```
 
-Yukarıdaki react kodunun Babel ile dönüştürülmüş hali
+Yukarıdaki react kodunun dönüştürülmüş hali
 
 ```js
 	class JSXDemo extends React.Component {
@@ -187,7 +187,7 @@ React.createElement yapısı
 ```js
 	React.createElement(type, [props], [...children])
 
-	// verilen parametreleri bu şekilde objeleler gösterilebilir
+	// verilen parametreleri bu şekilde bellekte tutulur
 	{   
 		type: 'h1',   
 		props: {     
@@ -221,9 +221,9 @@ Custom react createElement Function
         for (let name in attrs) {
             if (name && attrs.hasOwnProperty(name)) {
                 let value = attrs[name];
-                if (value) {
+                if (value === true) {
                     element.setAttribute(name, name);
-                } else if (value != null) {
+                } else if (value !== false && value != null) {
                     element.setAttribute(name, value.toString());
                 }
             }
@@ -245,6 +245,60 @@ Virtual DOM Real yani gerçek DOM’ un bellekteki kopyasıdır.
 
 Virtual DOM üzerinde document objelerimiz anahtar-değer yani bilindiği üzere key-value değerleri olarak saklanmaktadır. Yani bellekte aynı anda hem real dom hem de virtual dom bulunmaktadır. Burada virtual dom’ un artısı, bizim verilerimizde bir güncelleme olduğunda bu değişiklik sayfalarımıza da anında yansıyacak ve kullanıcılar bu değişiklikleri anında görecekler. Yani performans açısından değerlendirirsek oldukça başarılı.
 
-Nedir peki bu algoritmalar? React kendi diff algoritmasını kullanıyor. Bu algoritma devreye girdiğinde hangi objede değişiklik var ya da yok belli oluyor. Değişiklik bulunan yerde, bulunan değişiklikler stateler üzerinde gerçekleşiyor ve bu diff algoritmaları değişen state’ i bulup tek o state’ in bulunduğu componenti render ediyor.
+```js
+	//yazılan react kodu
+		<div>
+			<h1 className="title">Want to learn about Virtual DOM?</h1>
+			<div className="button-container">
+				<Button title="Yes" />
+				<Button title="No" />
+			</div>
+		</div>
 
+	// virtual dom olarak bellekte tutulan react kodunun karşılığı
+{
+    type: 'div',
+    key: null,
+    ref: null,
+    props: {
+        children: [
+            {
+                type: 'h1',
+                key: null,
+                ref: null,
+                props: {
+                    className: 'title',
+                    children: 'Want to learn about Virtual DOM?'
+                }
+            },
+            {
+                type: 'div',
+                key: null,
+                ref: null,
+                props: {
+                    className: 'button-container',
+                    children: [
+                        {
+                            type: Button(),
+                            props: {
+                                title: 'Yes'
+                            }
+                        },
+                        {
+                            type: Button(),
+                            props: {
+                                title: 'No'
+                            }  
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
+```
+
+React kendi diff algoritmasını kullanıyor. Bu algoritma devreye girdiğinde hangi objede değişiklik var ya da yok belli oluyor. Değişiklik bulunan yerde, bulunan değişiklikler stateler üzerinde gerçekleşiyor ve bu diff algoritmaları değişen state’ i bulup tek o state’ in bulunduğu componenti render ediyor.
+
+Reconciliation
 ![react-algorithm](https://miro.medium.com/v2/resize:fit:720/format:webp/1*ibs4RelQqQVltqVKmKHkDw.jpeg)

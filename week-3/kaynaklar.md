@@ -4,3 +4,4 @@
 * https://gaurav-techgeek.medium.com/time-to-say-goodbye-to-webpack-5bf06ff48823
 * https://medium.com/frontend-development-with-js/eslint-nedir-ne-i%CC%87%C5%9Fe-yar%C4%B1yor-d97e5573cc46
 * https://medium.com/kodcular/vi%CC%87rtual-dom-nedi%CC%87r-react-i%CC%87le-kullanimi-9cfdee76adad
+* https://zipy-ai.medium.com/how-react-works-under-the-hood-d2af692e8be0
