@@ -124,6 +124,11 @@ En çok kullanılan CLI lar
 Vite neden bu kadar popüler?
 
 Vite projedeki bağımlılıkları pre-bundle ederken esbuild kullanıyor.Esbuild diğer bundler'lara göre 10-100x daha hızlı performans veriyor.
+Hot Module Replacement (HMR) kullanılıyor
+Typescript,jsx ve dinamik import'u destekliyor.
+
+Rollup js kullanarak bundle işlemini yapar.
+Serve etmeden build işlemini yapmıyor.
 
 Diğer Bundlerların çalışma mantığı
 ![Bundler](https://miro.medium.com/v2/resize:fit:720/format:webp/1*EcVlu5OOebUL06xnZWVaTg.png)
@@ -302,3 +307,9 @@ React kendi diff algoritmasını kullanıyor. Bu algoritma devreye girdiğinde h
 
 Reconciliation
 ![react-algorithm](https://miro.medium.com/v2/resize:fit:720/format:webp/1*ibs4RelQqQVltqVKmKHkDw.jpeg)
+
+[En çok kullanılan eslint pluginleri](https://github.com/dustinspecker/awesome-eslint)
+
+SWC Nedir?
+SWC, Babel yerine tasarlanmış JavaScript ve TypeScript derleyicisidir.
+Rust temelli parser kullandığı için Babel'e göre daha hızlıdır
