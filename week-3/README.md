@@ -8,29 +8,31 @@ Proje yayına hazır şekilde düzenlenir, hatalardan arındırılır, sıkışt
 
 ![web app architecture](https://ceaksan.com/tr/web-application-module-bundler-nedir/web-app-mimarisi.jpg)
 
-
 Bundler Faydaları
-* Kolay içe aktarım
-    * ```js
-        // dosya yolu ./src/core.js 
-        var _ = require('../node_modules/lodash/lodash.js');
 
-        // dosya yolu ./src/app/main.js
-        var _ = require('../../node_modules/lodash/lodash.js'); 
-        
-        // herhangi bir yer
-        var _ = require('lodash');
-      ```
-* Farklı dosya tiplerini ekleme imkanı sunar
-    * ```js
-      import ‘./core.js’;
-      import ‘./style.css’;
-      const template = require(‘./view.html’);
-      ```
-* Yazılan kodu minimize eder (bundler size) optimize etmemizi sağlar
-* Bütün tarayıcılar için yazılan kodları indirgemeye(downgrade) ve tarayıcı uyumluluğunu sağlar.
-    * Babel sayesinde modern dil versiyonlarını kullanmamıza imkan sağlar
-* **test** **build** **watch** gibi komutları kullanmamızı sağlar
+- Kolay içe aktarım
+
+  - ```js
+    // dosya yolu ./src/core.js
+    var _ = require("../node_modules/lodash/lodash.js");
+
+    // dosya yolu ./src/app/main.js
+    var _ = require("../../node_modules/lodash/lodash.js");
+
+    // herhangi bir yer
+    var _ = require("lodash");
+    ```
+
+- Farklı dosya tiplerini ekleme imkanı sunar
+  - ```js
+    import ‘./core.js’;
+    import ‘./style.css’;
+    const template = require(‘./view.html’);
+    ```
+- Yazılan kodu minimize eder (bundler size) optimize etmemizi sağlar
+- Bütün tarayıcılar için yazılan kodları indirgemeye(downgrade) ve tarayıcı uyumluluğunu sağlar.
+  - Babel sayesinde modern dil versiyonlarını kullanmamıza imkan sağlar
+- **test** **build** **watch** gibi komutları kullanmamızı sağlar
   ```json
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
@@ -43,8 +45,9 @@ Bundler Faydaları
   ```
 
 WebPack config dosyası
+
 ```js
-    // Generated using webpack-cli https://github.com/webpack/webpack-cli
+// Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -139,23 +142,27 @@ Vite ve Snowpack'in çalışma mantığı
 ## Linter ve Formatter Nedir
 
 Linter
-* Temel çalışma mantığı; bir takım kurallar doğrultusunda kodunuzu tarayıp bunun ile ilgili uyarıları vererek geliştiricileri uyarıyor. Bir çok kod editörü ve boilerplate yapılarda hazır olarak geliyor. Örneğin React Geliştirme Ortamının Oluşturulması sırasında kod paketinin içerisine hazır olarak kurulmuş oluyor.
-* Eslint
+
+- Temel çalışma mantığı; bir takım kurallar doğrultusunda kodunuzu tarayıp bunun ile ilgili uyarıları vererek geliştiricileri uyarıyor. Bir çok kod editörü ve boilerplate yapılarda hazır olarak geliyor. Örneğin React Geliştirme Ortamının Oluşturulması sırasında kod paketinin içerisine hazır olarak kurulmuş oluyor.
+- Eslint
 
 Formatter
-* Formatter, geliştiricilerin kodlarını standart ve tutarlı bir şekilde otomatik olarak biçimlendirmelerini sağlayan popüler bir kod biçimlendirme aracıdır.
-* Prettier
+
+- Formatter, geliştiricilerin kodlarını standart ve tutarlı bir şekilde otomatik olarak biçimlendirmelerini sağlayan popüler bir kod biçimlendirme aracıdır.
+- Prettier
 
 ## React
 
-React  tek sayfa uygulamalar için kullanıcı arayüzü oluşturmak ve geliştirmek amacıyla yapılan bir JavaScript kütüphanesidir(framework değil).
+React tek sayfa uygulamalar için kullanıcı arayüzü oluşturmak ve geliştirmek amacıyla yapılan bir JavaScript kütüphanesidir(framework değil).
 
 **declarative** yapısını kullanır kod okunaklığı ve geliştirici deneyimi açısında çok iyi bir özelliktir.
 
 Yazılan Kod
+
 ![declarative](https://miro.medium.com/v2/resize:fit:720/format:webp/1*u94yCCRukpbbePtqah8ASA.png)
 
 Sonuç
+
 ![production](https://miro.medium.com/v2/resize:fit:720/format:webp/1*Jhfz8ACItuBUlyELylDviQ.png)
 
 JSX Nedir?
@@ -163,27 +170,28 @@ JSX Nedir?
 Kolayca html ve javascripti içi içe kullanmamızı sağlayan react in kullandığı bir yazım türüdür.
 
 JSX öneği
+
 ```js
-	const jsx = <h1>This is JSX</h1>
+const jsx = <h1>This is JSX</h1>;
 ```
 
 JSX ile class yapısındaki kullanım
-```js
 
-	class JSXDemo extends React.Component {
-    render() {
-        return <h1>This is JSX</h1>;
-    	}
+```js
+class JSXDemo extends React.Component {
+	render() {
+		return <h1>This is JSX</h1>;
 	}
+}
 ```
 
 Yukarıdaki react kodunun dönüştürülmüş hali
 
 ```js
-	class JSXDemo extends React.Component {
-    render() {
-        return React.createElement("h1", null, "This is JSX");
-    }
+class JSXDemo extends React.Component {
+	render() {
+		return React.createElement("h1", null, "This is JSX");
+	}
 }
 ```
 
@@ -193,54 +201,58 @@ React.createElement yapısı
 	React.createElement(type, [props], [...children])
 
 	// verilen parametreleri bu şekilde bellekte tutulur
-	{   
-		type: 'h1',   
-		props: {     
-			children: 'This is JSX'   
+	{
+		type: 'h1',
+		props: {
+			children: 'This is JSX'
 		}
 	}
 ```
 
 Fragment ya da wrapper olamadan birden çok elemanı dönme şekli
+
 ```js
-	import React from "react";
-	import ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
 
-	const App = () => {
-		return (
-			[<p key="first">This is first JSX Element!</p>,<p key="second">This is another JSX Element</p>]
-		);
-	};
+const App = () => {
+	return [
+		<p key='first'>This is first JSX Element!</p>,
+		<p key='second'>This is another JSX Element</p>,
+	];
+};
 
-	const rootElement = document.getElementById("root");
-	ReactDOM.render(<App />, rootElement);
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
 ```
 
 Custom react createElement Function
 
- ```js
-	const React = {
-    createElement: function (tag, attrs, children) {
-        var element = document.createElement(tag);
+```js
+const React = {
+	createElement: function (tag, attrs, children) {
+		var element = document.createElement(tag);
 
-        for (let name in attrs) {
-            if (name && attrs.hasOwnProperty(name)) {
-                let value = attrs[name];
-                if (value === true) {
-                    element.setAttribute(name, name);
-                } else if (value !== false && value != null) {
-                    element.setAttribute(name, value.toString());
-                }
-            }
-        }
-        for (let i = 2; i < arguments.length; i++) {
-            let child = arguments[i];
-            element.appendChild(
-                child.nodeType == null ?
-                    document.createTextNode(child.toString()) : child);
-        }
-        return element;
-    }
+		for (let name in attrs) {
+			if (name && attrs.hasOwnProperty(name)) {
+				let value = attrs[name];
+				if (value === true) {
+					element.setAttribute(name, name);
+				} else if (value !== false && value != null) {
+					element.setAttribute(name, value.toString());
+				}
+			}
+		}
+		for (let i = 2; i < arguments.length; i++) {
+			let child = arguments[i];
+			element.appendChild(
+				child.nodeType == null
+					? document.createTextNode(child.toString())
+					: child
+			);
+		}
+		return element;
+	},
 };
 ```
 
@@ -293,7 +305,7 @@ Virtual DOM üzerinde document objelerimiz anahtar-değer yani bilindiği üzere
                             type: Button(),
                             props: {
                                 title: 'No'
-                            }  
+                            }
                         }
                     ]
                 }
