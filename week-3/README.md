@@ -134,9 +134,11 @@ Rollup js kullanarak bundle işlemini yapar.
 Serve etmeden build işlemini yapmıyor.
 
 Diğer Bundlerların çalışma mantığı
+
 ![Bundler](https://miro.medium.com/v2/resize:fit:720/format:webp/1*EcVlu5OOebUL06xnZWVaTg.png)
 
 Vite ve Snowpack'in çalışma mantığı
+
 ![Vite,snowpack](https://miro.medium.com/v2/resize:fit:720/format:webp/1*qKT6c5NA8iq80saCyFcByw.png)
 
 ## Linter ve Formatter Nedir
@@ -263,14 +265,14 @@ Virtual DOM Real yani gerçek DOM’ un bellekteki kopyasıdır.
 Virtual DOM üzerinde document objelerimiz anahtar-değer yani bilindiği üzere key-value değerleri olarak saklanmaktadır. Yani bellekte aynı anda hem real dom hem de virtual dom bulunmaktadır. Burada virtual dom’ un artısı, bizim verilerimizde bir güncelleme olduğunda bu değişiklik sayfalarımıza da anında yansıyacak ve kullanıcılar bu değişiklikleri anında görecekler. Yani performans açısından değerlendirirsek oldukça başarılı.
 
 ```js
-	//yazılan react kodu
-		<div>
-			<h1 className="title">Want to learn about Virtual DOM?</h1>
-			<div className="button-container">
-				<Button title="Yes" />
-				<Button title="No" />
-			</div>
+//yazılan react kodu
+	<div>
+		<h1 className="title">Want to learn about Virtual DOM?</h1>
+		<div className="button-container">
+			<Button title="Yes" />
+			<Button title="No" />
 		</div>
+	</div>
 
 	// virtual dom olarak bellekte tutulan react kodunun karşılığı
 {
@@ -318,6 +320,7 @@ Virtual DOM üzerinde document objelerimiz anahtar-değer yani bilindiği üzere
 React kendi diff algoritmasını kullanıyor. Bu algoritma devreye girdiğinde hangi objede değişiklik var ya da yok belli oluyor. Değişiklik bulunan yerde, bulunan değişiklikler stateler üzerinde gerçekleşiyor ve bu diff algoritmaları değişen state’ i bulup tek o state’ in bulunduğu componenti render ediyor.
 
 Reconciliation
+
 ![react-algorithm](https://miro.medium.com/v2/resize:fit:720/format:webp/1*ibs4RelQqQVltqVKmKHkDw.jpeg)
 
 [En çok kullanılan eslint pluginleri](https://github.com/dustinspecker/awesome-eslint)
