@@ -1,14 +1,9 @@
-// import reactLogo from './assets/react.svg'
-// import viteLogo from "../public/vite.svg"
-import "./App.css";
+import Test from '@components/Chart';
 
-function App() {
+export default function App() {
   return (
-    <div className="text-4xl text-red-200">
-      <div>Hello world</div>
-      <button type="button">asdsdad</button>
+    <div className="h-[41vh]">
+      <Test />
     </div>
   );
 }
-
-export default App;
