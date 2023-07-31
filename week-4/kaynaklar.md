@@ -1,0 +1,4 @@
+- https://www.mobilhanem.com/reactjs-event-handling/
+- https://tio.ist/tr/frontend-gelistirme/custom-hooks-nedir-nasil-olusturulur/#:~:text=React%20Hooks%2C%20React'%C4%B1n%20en,React%20fonksiyonlar%C4%B1n%C4%B1n%20i%C3%A7inde%20kullan%C4%B1l%C4%B1r.
+- https://react.dev/reference/react
+- https://dev.to/bhavzlearn/demystifying-useref-and-usememo-in-react-4jcl
