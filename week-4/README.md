@@ -65,7 +65,82 @@ useState bir state hookudur. Herhangi değişkenleri saklayıp react bileşen fo
 
 useEffect Nedir?
 
-useEffect Hook’u ile component mount edildiğinde hangi fonksiyonun çalıştırılacağına karar verilir. Anonim fonksiyon ve dependency parametrelerini alır.
+**useEffect** Hook’u ile component mount edildiğinde hangi fonksiyonun çalıştırılacağına karar verilir. Anonim fonksiyon ve dependency parametrelerini alır.
+Yaşam döngüsü(lifecycle) methodlarının tersine UI'ı bloklamaz çünkü asenkron bir şekilde çalışır.
+
+Component yaşam döngüsünde effects çalışma mantığı
+
+![effects](https://blog.logrocket.com/wp-content/uploads/2020/11/common-react-lifecycle-methods-1.png)
+
+Hooks yaşam döngüsünde effects çalışma mantığı
+
+![effect-with-hooks](https://blog.logrocket.com/wp-content/uploads/2020/11/react-hooks-lifecycle-1.png)
+
+```js
+useEffect(
+	() => {
+		// Component mount
+
+		return () => {
+			// Component unmount
+		};
+	},
+	// optional dependency array
+	[]
+);
+```
+
+Best Practices of useEffect
+
+- Bağlantılı olmayan durumları takip etmek için
+- ```js
+  useEffect(
+  	() => {
+  		// Side effect 1
+  	},
+  	[
+  		/* dependencies for effect 1 */
+  	]
+  );
+
+  useEffect(
+  	() => {
+  		// Side effect 2
+  	},
+  	[
+  		/* dependencies for effect 2 */
+  	]
+  );
+  ```
+
+- Yan etkileri temizleme
+- ```js
+  		useEffect(() =>
+  		const handleEvent = (event) => {
+  		// Process the event
+  		};
+
+  		window.addEventListener('customEvent', handleEvent);
+
+  		return () => {
+  		window.removeEventListener('customEvent', handleEvent);
+  		};
+  		[]);
+  ```
+
+useLayoutEffects
+
+This means that the code inside useLayoutEffect will run before the browser paints
+which is important for layout changes like measuring elements or animating them.
+
+useLayoutEffect senkron bir şekilde React'in DOM üzerindeki manipülasyonlarından sonra çalışır yani browser paint edilmeden önce çalışıyor bu sayede layout değişiklikleri element ölçümleri ve animasyonlar yapılabiliniyor.
+En iyi kullanım yolu layout değişiklerin hemen uygulanmasıdır
+
+useImperativeHandle
+
+Bu Hook fonksiyon bileşeninize dışarıdan imperative erişim için API sağlayarak , parent bileşenin bu bileşen içerisindeki API tüketebilmesine olanak sağlar.
+
+![useImperativeHandle](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*1LvNIwbYJvBsEF89JMU8JA.png)
 
 useRef
 
@@ -115,3 +190,43 @@ export default function App() {
 	);
 }
 ```
+
+useReducer
+
+useReducer , geliştiricilere bileşenlerin state bir akış şeklinde yönetiliyorsa bu aşamada bir kolaylık sağlar useState yerine bu Hook’tan faydalanabilirsiniz. Örneğin aşağıdaki örnekte Ekranımızda bir counter değeri var. Buna etki eden UI Bileşenleri var. En basit yöntem bunu useState üzerinden kullanarak 1 arttırmak, 1 azaltmak veya 0 set etmek olarak düşünülebilir.
+
+```js
+import { useReducer } from "react";
+
+function reducer(state, action) {
+	switch (action.type) {
+		case "increment":
+			return state + 1;
+		case "decrement":
+			return state - 1;
+		case "reset":
+			return 0;
+		default:
+			break;
+	}
+}
+
+export default function App() {
+	const [state, dispatch] = useReducer(reducer, 0);
+
+	return (
+		<div className='App'>
+			<h1>{state}</h1>
+			<button onClick={() => dispatch({ type: "increment" })}>Arttır</button>
+			<button onClick={() => dispatch({ type: "decrement" })}>Azalt</button>
+			<button onClick={() => dispatch({ type: "reset" })}>Sıfırla</button>
+		</div>
+	);
+}
+```
+
+useContext
+
+Context kullanarak çalıştığınız componentler arasında veri taşıma işlemi gerçekleştirebilirsiniz diyebilirim. Context yapısında, context’in kendisine ait bir state vardır. Bu state provider componentinde tutulur. Eski yöntemle bahsedecek olursak bu state’e Context API içerisinde yer alan Consumer ile erişim sağlanır.
+
+![useContext](https://dmitripavlutin.com/90649ae4bdf379c482ad24e0dd220bc4/react-context-3.svg)
