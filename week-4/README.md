@@ -230,3 +230,74 @@ useContext
 Context kullanarak çalıştığınız componentler arasında veri taşıma işlemi gerçekleştirebilirsiniz diyebilirim. Context yapısında, context’in kendisine ait bir state vardır. Bu state provider componentinde tutulur. Eski yöntemle bahsedecek olursak bu state’e Context API içerisinde yer alan Consumer ile erişim sağlanır.
 
 ![useContext](https://dmitripavlutin.com/90649ae4bdf379c482ad24e0dd220bc4/react-context-3.svg)
+
+Custom Hooks Nedir? Nasıl Kullanılır?
+
+React, bileşenlerde aynı mantıktaki farklı gereksinimlerimize göre özelleştirmek istediğimiz Hook’umuzu yazmamız için kolaylık sağlar. React’ın custom Hook’umuzun hook olduğunu anlayabilmesi için fonksiyonu use ile başlayarak yazmalıyız. Örnek olarak useLocalStorage, useInput gibi. React, kendi Hook’larını custom hooks içinde kullanmamıza olanak tanır. İsteğimize bağlı olarak custom hooks parametre alabilir ve hangi değerleri döndürmek istediğimizi belirleyebiliriz. custom hook sayesinde yeniden kullanılabilir fonksiyonlar üretebilir, kod tekrarından kaçınabiliriz.
+
+Custom Hook Örneği
+
+```js
+import { useState, useEffect } from "react";
+
+const useCurrentLocation = () => {
+	// store location in state
+	const [location, setLocation] = useState();
+
+	// Success handler for geolocation's `getCurrentPosition` method
+	const handleSuccess = (position) => {
+		const { latitude, longitude } = position.coords;
+
+		setLocation({
+			latitude,
+			longitude,
+		});
+	};
+
+	useEffect(() => {
+		if (!navigator.geolocation) {
+			return false;
+		}
+		// Call the Geolocation API
+		navigator.geolocation.getCurrentPosition(handleSuccess);
+	}, []);
+
+	// Expose location result
+	return { location };
+};
+
+export default useCurrentLocation;
+```
+
+Custom Hooks Best Practices
+
+Basit tutulmalı:
+Custom hooklar basit olmalı ve spesifik özellikler barındırmalı eğer yapı kompleksleşmeye başlarsa daha küçük hooklara parçalanabilir.
+
+Test edilmeli:
+Test ederek custom hookların dogru çalıştığından emin olunmalı.
+
+React Hooks Kütüphaneleri
+
+- React Hooks Form
+
+  - Form state yönetimi ve validasyon işlemleri için kullanılır.Render sayısını ve gereksiz kod yazımını azaltarak optimizasyon sağlar.
+
+- usehooks
+
+  - Custom hooklar şeklinde yazılmış spesifik işler yapmamızı sağlayan bir kütüphanedir.
+  - UI kontrolleri, animasyonlar, side-effects vs
+
+- React Query
+
+  - React Query kütüphanesi sunucu ile istemci(client) arasında state yönetimi sırasında karşınıza çıkacak zorlukları geliştiriciden akıllıca soyutlayan data fetching kütüphanesidir. (Zorluklar \* fetching, caching, synchronizing, and updating server state)
+
+  - Transport/protocol/backend agnostic data fetching (REST, GraphQL, promises, - whatever!)
+  - Auto Caching + Refetching (stale-while-revalidate, Window Refocus, Polling/- Realtime)
+  - Parallel + Dependent Queries
+  - Mutations + Reactive Query Refetching
+  - Multi-layer Cache + Automatic Garbage Collection
+  - Paginated + Cursor-based Queries
+  - Load-More + Infinite Scroll Queries w/ Scroll Recovery
+  - Request Cancellation
+  - React Suspense + Fetch-As-You-Render Query Prefetching

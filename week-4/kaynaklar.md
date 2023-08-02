@@ -8,3 +8,5 @@
 * https://medium.com/frontend-development-with-js/react-hooks-usereducer-nedir-cb19c7fa0746
 * https://dmitripavlutin.com/90649ae4bdf379c482ad24e0dd220bc4/react-context-3.svg
 * https://aligoren.com/react-hooks-ve-usecontext-kullanimi/
+* https://dev.to/ravics1721/top-10-awesome-react-hooks-libraries-1924
+* https://medium.com/frontend-development-with-js/react-query-fc266da9f7fa
