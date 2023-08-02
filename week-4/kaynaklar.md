@@ -10,3 +10,5 @@
 * https://aligoren.com/react-hooks-ve-usecontext-kullanimi/
 * https://dev.to/ravics1721/top-10-awesome-react-hooks-libraries-1924
 * https://medium.com/frontend-development-with-js/react-query-fc266da9f7fa
+* https://abdulkerimkaraman.medium.com/react-v18-0-ile-gelen-yenilikler-a2c4bed6cc77#:~:text=useTransition%3A%20Beklenen%20durumlari%20izlemek%20ve,bir%20durumu%20baslatmak%20icin%20kullanabiliriz.
+* https://react.dev/reference/react/

@@ -231,6 +231,30 @@ Context kullanarak çalıştığınız componentler arasında veri taşıma işl
 
 ![useContext](https://dmitripavlutin.com/90649ae4bdf379c482ad24e0dd220bc4/react-context-3.svg)
 
+useTransition
+
+Kullanıcı arabirimini engellemeden durumu güncellemenizi sağlayan bir React Hook’tur. useTransition,herhangi bir parametre almaz.
+
+useTransition , iki öğe içeren bir dizi döndürür:
+
+- isPending Bekleyen bir geçiş olup olmadığını size söyler.
+- startTransition(),tarafından döndürülen işlev,durum güncellemesini bir geçiş olarak işaretlemenizi sağlar.
+- React’teki eşzamanlı mod, acil görevleri acil olmayan görevlerden ayırmanıza olanak tanıyarak UI güncellemelerini daha kullanıcı dostu hale getirir.
+
+```js
+function TabContainer() {
+	const [isPending, startTransition] = useTransition();
+	const [tab, setTab] = useState("about");
+
+	function selectTab(nextTab) {
+		startTransition(() => {
+			setTab(nextTab);
+		});
+	}
+	// ...
+}
+```
+
 Custom Hooks Nedir? Nasıl Kullanılır?
 
 React, bileşenlerde aynı mantıktaki farklı gereksinimlerimize göre özelleştirmek istediğimiz Hook’umuzu yazmamız için kolaylık sağlar. React’ın custom Hook’umuzun hook olduğunu anlayabilmesi için fonksiyonu use ile başlayarak yazmalıyız. Örnek olarak useLocalStorage, useInput gibi. React, kendi Hook’larını custom hooks içinde kullanmamıza olanak tanır. İsteğimize bağlı olarak custom hooks parametre alabilir ve hangi değerleri döndürmek istediğimizi belirleyebiliriz. custom hook sayesinde yeniden kullanılabilir fonksiyonlar üretebilir, kod tekrarından kaçınabiliriz.
@@ -288,6 +312,148 @@ React Hooks Kütüphaneleri
   - Custom hooklar şeklinde yazılmış spesifik işler yapmamızı sağlayan bir kütüphanedir.
   - UI kontrolleri, animasyonlar, side-effects vs
 
+useMediaQuery
+
+```ts
+import { useEffect, useState } from "react";
+
+export function useMediaQuery(query: string): boolean {
+	const getMatches = (query: string): boolean => {
+		// Prevents SSR issues
+		if (typeof window !== "undefined") {
+			return window.matchMedia(query).matches;
+		}
+		return false;
+	};
+
+	const [matches, setMatches] = useState<boolean>(getMatches(query));
+
+	function handleChange() {
+		setMatches(getMatches(query));
+	}
+
+	useEffect(() => {
+		const matchMedia = window.matchMedia(query);
+
+		// Triggered at the first client-side load and if query changes
+		handleChange();
+
+		// Listen matchMedia
+		if (matchMedia.addListener) {
+			matchMedia.addListener(handleChange);
+		} else {
+			matchMedia.addEventListener("change", handleChange);
+		}
+
+		return () => {
+			if (matchMedia.removeListener) {
+				matchMedia.removeListener(handleChange);
+			} else {
+				matchMedia.removeEventListener("change", handleChange);
+			}
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [query]);
+
+	return matches;
+}
+```
+
+useFetch
+
+```ts
+import { useEffect, useReducer, useRef } from "react";
+
+interface State<T> {
+	data?: T;
+	error?: Error;
+}
+
+type Cache<T> = { [url: string]: T };
+
+// discriminated union type
+type Action<T> =
+	| { type: "loading" }
+	| { type: "fetched"; payload: T }
+	| { type: "error"; payload: Error };
+
+export function useFetch<T = unknown>(
+	url?: string,
+	options?: RequestInit
+): State<T> {
+	const cache = useRef<Cache<T>>({});
+
+	// Used to prevent state update if the component is unmounted
+	const cancelRequest = useRef<boolean>(false);
+
+	const initialState: State<T> = {
+		error: undefined,
+		data: undefined,
+	};
+
+	// Keep state logic separated
+	const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
+		switch (action.type) {
+			case "loading":
+				return { ...initialState };
+			case "fetched":
+				return { ...initialState, data: action.payload };
+			case "error":
+				return { ...initialState, error: action.payload };
+			default:
+				return state;
+		}
+	};
+
+	const [state, dispatch] = useReducer(fetchReducer, initialState);
+
+	useEffect(() => {
+		// Do nothing if the url is not given
+		if (!url) return;
+
+		cancelRequest.current = false;
+
+		const fetchData = async () => {
+			dispatch({ type: "loading" });
+
+			// If a cache exists for this url, return it
+			if (cache.current[url]) {
+				dispatch({ type: "fetched", payload: cache.current[url] });
+				return;
+			}
+
+			try {
+				const response = await fetch(url, options);
+				if (!response.ok) {
+					throw new Error(response.statusText);
+				}
+
+				const data = (await response.json()) as T;
+				cache.current[url] = data;
+				if (cancelRequest.current) return;
+
+				dispatch({ type: "fetched", payload: data });
+			} catch (error) {
+				if (cancelRequest.current) return;
+
+				dispatch({ type: "error", payload: error as Error });
+			}
+		};
+
+		void fetchData();
+
+		// Use the cleanup function for avoiding a possibly...
+		// ...state update after the component was unmounted
+		return () => {
+			cancelRequest.current = true;
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [url]);
+
+	return state;
+}
+```
+
 - React Query
 
   - React Query kütüphanesi sunucu ile istemci(client) arasında state yönetimi sırasında karşınıza çıkacak zorlukları geliştiriciden akıllıca soyutlayan data fetching kütüphanesidir. (Zorluklar \* fetching, caching, synchronizing, and updating server state)
@@ -301,3 +467,7 @@ React Hooks Kütüphaneleri
   - Load-More + Infinite Scroll Queries w/ Scroll Recovery
   - Request Cancellation
   - React Suspense + Fetch-As-You-Render Query Prefetching
+
+```
+
+```
