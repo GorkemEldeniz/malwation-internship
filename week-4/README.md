@@ -20,8 +20,7 @@ React Event'in farkları
 ```js
 //HTML
 <a href='#' onclick='alert(‘Linke tıklandı.’); return false'>
-	{" "}
-	Test{" "}
+	Test
 </a>;
 //REACT
 const Test = () => {
@@ -31,8 +30,7 @@ const Test = () => {
 	}
 	return (
 		<a href='#' onClick={handleClick}>
-			{" "}
-			Test{" "}
+			Test
 		</a>
 	);
 };
@@ -115,26 +113,26 @@ Best Practices of useEffect
 
 - Yan etkileri temizleme
 - ```js
-  		useEffect(() =>
+  	useEffect(() =>
   		const handleEvent = (event) => {
   		// Process the event
-  		};
+  	};
 
   		window.addEventListener('customEvent', handleEvent);
 
   		return () => {
-  		window.removeEventListener('customEvent', handleEvent);
+  			window.removeEventListener('customEvent', handleEvent);
   		};
-  		[]);
+  	[]);
   ```
 
 useLayoutEffects
 
-This means that the code inside useLayoutEffect will run before the browser paints
-which is important for layout changes like measuring elements or animating them.
+useLayoutEffect ekran paint işlemi olmadan DOM Mutation göre sonra ilgili bileşenlerin ölçüleri gerçek bilgileri alıp bunlar üzerinde işlem yapmak için kullanılır.
 
-useLayoutEffect senkron bir şekilde React'in DOM üzerindeki manipülasyonlarından sonra çalışır yani browser paint edilmeden önce çalışıyor bu sayede layout değişiklikleri element ölçümleri ve animasyonlar yapılabiliniyor.
-En iyi kullanım yolu layout değişiklerin hemen uygulanmasıdır
+Render Aşaması → React Updates DOM → useLayoutEffect → BrowserPaint Screen → useEffect
+
+![useLayoutEffects](https://miro.medium.com/v2/resize:fit:720/format:webp/1*mO2jFHW9fHMoPLhiAHvsmw.png)
 
 useImperativeHandle
 
@@ -229,6 +227,12 @@ useContext
 
 Context kullanarak çalıştığınız componentler arasında veri taşıma işlemi gerçekleştirebilirsiniz diyebilirim. Context yapısında, context’in kendisine ait bir state vardır. Bu state provider componentinde tutulur. Eski yöntemle bahsedecek olursak bu state’e Context API içerisinde yer alan Consumer ile erişim sağlanır.
 
+- Context : Bağlamdaki değerleri tutar..
+- Provider: Bağlam içerisindeki değerleri sağlar.
+- Consumer: Bağlam içerisindeki değerleri herhangi bir düğüm içerisinden erişilebilir hale getirir.
+
+![useContext](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*rZVVAYZkaps8s0vdqiBBJg.png)
+
 ![useContext](https://dmitripavlutin.com/90649ae4bdf379c482ad24e0dd220bc4/react-context-3.svg)
 
 useTransition
@@ -306,6 +310,7 @@ React Hooks Kütüphaneleri
 - React Hooks Form
 
   - Form state yönetimi ve validasyon işlemleri için kullanılır.Render sayısını ve gereksiz kod yazımını azaltarak optimizasyon sağlar.
+  - ![react-hook-form](https://react-hook-form.com/images/dev-tool.png)
 
 - usehooks
 
@@ -468,6 +473,64 @@ export function useFetch<T = unknown>(
   - Request Cancellation
   - React Suspense + Fetch-As-You-Render Query Prefetching
 
-```
+```js
+import {
+	useQuery,
+	useMutation,
+	useQueryClient,
+	QueryClient,
+	QueryClientProvider,
+} from "react-query";
+import { getTodos, postTodo } from "../my-api";
 
+// Create a client
+const queryClient = new QueryClient();
+
+function App() {
+	return (
+		// Provide the client to your App
+		<QueryClientProvider client={queryClient}>
+			<Todos />
+		</QueryClientProvider>
+	);
+}
+
+function Todos() {
+	// Access the client
+	const queryClient = useQueryClient();
+
+	// Queries
+	const query = useQuery("todos", getTodos);
+
+	// Mutations
+	const mutation = useMutation(postTodo, {
+		onSuccess: () => {
+			// Invalidate and refetch
+			queryClient.invalidateQueries("todos");
+		},
+	});
+
+	return (
+		<div>
+			<ul>
+				{query.data.map((todo) => (
+					<li key={todo.id}>{todo.title}</li>
+				))}
+			</ul>
+
+			<button
+				onClick={() => {
+					mutation.mutate({
+						id: Date.now(),
+						title: "Do Laundry",
+					});
+				}}
+			>
+				Add Todo
+			</button>
+		</div>
+	);
+}
+
+render(<App />, document.getElementById("root"));
 ```

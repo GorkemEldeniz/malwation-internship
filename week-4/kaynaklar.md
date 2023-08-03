@@ -12,3 +12,4 @@
 * https://medium.com/frontend-development-with-js/react-query-fc266da9f7fa
 * https://abdulkerimkaraman.medium.com/react-v18-0-ile-gelen-yenilikler-a2c4bed6cc77#:~:text=useTransition%3A%20Beklenen%20durumlari%20izlemek%20ve,bir%20durumu%20baslatmak%20icin%20kullanabiliriz.
 * https://react.dev/reference/react/
+* https://medium.com/frontend-development-with-js/react-uselayouteffect-48bbba5368ec#:~:text=useLayoutEffect%20ekran%20paint%20i%C5%9Flemi%20olmadan,%C3%BCzerinde%20i%C5%9Flem%20yapmak%20i%C3%A7in%20kullan%C4%B1l%C4%B1r.
