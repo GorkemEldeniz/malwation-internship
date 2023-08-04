@@ -54,8 +54,8 @@ Başlıca React Hook’ları:
 - useRef
 - useImperativeHandle
 - useLayoutEffect
-- useDebugValue
-- useId
+- useTransition
+- useDeferredValue
 
 useState Nedir?
 
