@@ -1,4 +1,4 @@
-import { ReactComponent } from '@assets/react.svg';
+import ReactComponent from '@assets/react.svg';
 import Test from './components/Chart';
 import Image from './components/Image';
 import Icon from './components/Icon';
