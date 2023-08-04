@@ -818,7 +818,3 @@ Kullanım yöntemleri
   	wrapper='span'
   />;
   ```
-
-```
-
-```
