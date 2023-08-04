@@ -61,6 +61,25 @@ useState Nedir?
 
 useState bir state hookudur. Herhangi değişkenleri saklayıp react bileşen fonksiyonlarında erişmeye, şartlı olarak kullanmaya, güncellemeyi sağlar.
 
+```js
+import { useState } from "react";
+
+export default function App() {
+	const [active, setActive] = useState(false);
+
+	return (
+		<div>
+			{active ? "On" : "Off"}
+			<button onClick={() => setActive(!active)}>Toggle</button>
+		</div>
+	);
+}
+```
+
+useState(false) : Bileşeni globaldeki state yönetmemizi sağlayan utility bağlayan araç. useState react kütüphanesi içerisinden geliyor. **false** ise tutacağımız state default değeri…
+
+**[active,setActive]**: Burada tutulan değeri erişimi örneğin age üzerinden okuma(read) yapıyoruz . Ve setActive üzerinden yazma(write) yapıyor
+
 useEffect Nedir?
 
 **useEffect** Hook’u ile component mount edildiğinde hangi fonksiyonun çalıştırılacağına karar verilir. Anonim fonksiyon ve dependency parametrelerini alır.
@@ -113,22 +132,56 @@ Best Practices of useEffect
 
 - Yan etkileri temizleme
 - ```js
-  	useEffect(() =>
-  		const handleEvent = (event) => {
-  		// Process the event
+  useEffect(() =>
+  	const handleEvent = (event) => {
+  	// Process the event
+  };
+
+  	window.addEventListener('customEvent', handleEvent);
+
+  	return () => {
+  		window.removeEventListener('customEvent', handleEvent);
   	};
-
-  		window.addEventListener('customEvent', handleEvent);
-
-  		return () => {
-  			window.removeEventListener('customEvent', handleEvent);
-  		};
-  	[]);
+  []);
   ```
 
 useLayoutEffects
 
-useLayoutEffect ekran paint işlemi olmadan DOM Mutation göre sonra ilgili bileşenlerin ölçüleri gerçek bilgileri alıp bunlar üzerinde işlem yapmak için kullanılır.
+useLayoutEffect ekran paint işlemi olmadan DOM Mutationdan sonra ilgili bileşenlerin gerçek verilerini alıp bunlar üzerinde işlem yapmak için kullanılır.
+
+```js
+import { useEffect, useState } from "react";
+// burada önce 'Görkem' sonra 'Görkem Eldeniz' ekrana basılır
+export default function App() {
+	const [name, setName] = useState("Görkem");
+
+	useEffect(() => {
+		setName("Görkem Eldeniz");
+	}, []);
+
+	return (
+		<div>
+			<h1>{name}</h1>
+		</div>
+	);
+}
+
+import { useLayoutEffect, useState } from "react";
+// burada ise direkt 'Görkem Eldeniz' ekrana basılır
+export default function App() {
+	const [name, setName] = useState("Görkem");
+
+	useLayoutEffect(() => {
+		setName("Görkem Eldeniz");
+	}, []);
+
+	return (
+		<div>
+			<h1>{name}</h1>
+		</div>
+	);
+}
+```
 
 Render Aşaması → React Updates DOM → useLayoutEffect → BrowserPaint Screen → useEffect
 
@@ -258,6 +311,32 @@ function TabContainer() {
 	// ...
 }
 ```
+
+useDeferredValue
+
+Dom agacinin acil olmayan bir kisminin yeniden olusturulmasini ertelemenize olanak saglar.
+
+```js
+export default function App() {
+	const [query, setQuery] = useState("");
+	const deferredQuery = useDeferredValue(query);
+	return (
+		<>
+			<label>
+				Search albums:
+				<input value={query} onChange={(e) => setQuery(e.target.value)} />
+			</label>
+			<Suspense fallback={<h2>Loading...</h2>}>
+				<SearchResults query={deferredQuery} />
+			</Suspense>
+		</>
+	);
+}
+```
+
+useDeferredValue vs useTransition
+
+useTransition() size tam kontrol sağlar çünkü hangi kodun sarılacağına ve "düşük öncelikli" olarak ele alınacağına siz karar verirsiniz. Ancak bazen, gerçek durum güncelleme koduna erişiminiz olmayabilir (örneğin, üçüncü taraf bir kütüphane tarafından gerçekleştirildiği için). Ya da bazı nedenlerden dolayı useTransition() işlevini kullanamazsınız.
 
 Custom Hooks Nedir? Nasıl Kullanılır?
 
@@ -609,7 +688,7 @@ Kullanım yöntemleri
   export default App;
   ```
 
-- <svg> tag kullanımı
+- SVG Tag kullanımı
 - ```js
   import React from "react";
   const App = () => {
@@ -739,3 +818,7 @@ Kullanım yöntemleri
   	wrapper='span'
   />;
   ```
+
+```
+
+```
