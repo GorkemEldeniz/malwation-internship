@@ -1,0 +1,29 @@
+---------------------! Light-Theme !------------------------
+
+Wordle Başlık = rgba(40,40,41,255)
+
+Sağ Üst Menü İkon Rengi = rgba(135,138,140,255)
+
+Harf var ama farklı yerde(sarı) = rgba(201,180,88,255)
+
+Doğru yerde harf buldun = rgba(106,170,100,255)
+
+Yanlış harf harf yok = rgba(120,124,126,255)
+
+Arkaplan rengi = #fff
+
+
+---------------------! Dark-Theme !------------------------
+
+
+Wordle Başlık = rgba(215,218,220,255)
+
+Sağ Üst Menü İkon Rengi = rgba(86,87,88,255)
+
+Harf var ama farklı yerde(sarı) = rgba(181,159,59,255)
+
+Doğru yerde harf buldun = rgba(83,141,78,255)
+
+Yanlış harf harf yok = rgba(58,58,60,255)
+
+Arkaplan rengi = rgba(18,18,19,255)

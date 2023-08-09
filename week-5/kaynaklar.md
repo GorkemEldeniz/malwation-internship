@@ -1,0 +1,4 @@
+- https://www.userspots.com/rehber/design-system-tasarim-sistemleri-nedir
+- https://izniburak.medium.com/react-ile-high-order-component-hoc-kullan%C4%B1m%C4%B1-e64503d2c89a
+- https://netbilio.com/react-js-props-kullanimi/#:~:text=React%20Props%20Nedir%3F,tek%20props%20nesnesi%20%C3%BCzerinden%20ula%C5%9Fabiliriz.
+- https://medium.com/tech-lead-hub/best-practices-for-react-component-design-f0903c4c7204
