@@ -209,3 +209,49 @@ Component Yapısı:
   kullanılabilir ve test edilmesi daha kolay hale getirebilirsiniz.
 
 - Prop'ları kullanarak componentler arasında veri aktarın: Componentler hiyerarşisinde veri aktarmak için prop'ları kullanın. Bu, daha esnek ve bakımı kolay componentler oluşturmanıza yardımcı olabilir.
+
+Classnames Nedir?
+
+Şartlara bağlı olarak classları birleştiren basit bir javascript paketidir.
+
+```bash
+# via npm
+npm install classnames
+
+# via Bower
+bower install classnames
+
+# or Yarn (note that it will automatically save the package to your `dependencies` in `package.json`)
+yarn add classnames
+```
+
+Kullanımı
+
+```js
+classNames("foo", "bar"); // => 'foo bar'
+classNames("foo", { bar: true }); // => 'foo bar'
+classNames({ "foo-bar": true }); // => 'foo-bar'
+classNames({ "foo-bar": false }); // => ''
+classNames({ foo: true }, { bar: true }); // => 'foo bar'
+classNames({ foo: true, bar: true }); // => 'foo bar'
+
+// lots of arguments of various types
+classNames("foo", { bar: true, duck: false }, "baz", { quux: true }); // => 'foo bar baz quux'
+
+// other falsy values are just ignored
+classNames(null, false, "bar", undefined, 0, 1, { baz: null }, ""); // => 'bar 1'
+
+//recursively flattened
+var arr = ["b", { c: true, d: false }];
+classNames("a", arr); // => 'a b c'
+```
+
+Class Variance Authority(CVA)
+
+- StyleSheet çıktınız üzerinde tam kontrole ihtiyacınız olabilir.
+- İşiniz Tailwind CSS gibi bir framework kullanmanızı gerektirebilir.
+- Custom CSS'nizi yazmayı tercih edebilirsiniz.
+- "Geleneksel" CSS yaklaşımıyla varyantlar oluşturmak zorlu bir görev haline gelebilir; sınıfları prop'larla manuel olarak eşleştirmek ve türleri manuel olarak eklemek.
+
+CVA, UI geliştirmenin daha eğlenceli yönlerine odaklanmanıza izin vererek bu acı noktaları ortadan kaldırmayı amaçlamaktadır.
+Type-safe UI components oluşturmak için CSS-in-TS mantığını kullanır.
