@@ -14,10 +14,10 @@ const buttonVariants = cva("flex items-center justify-center cursor-pointer", {
       yellow: "bg-yellow-500 text-white hover:bg-yellow-400",
     },
     modifier: {
-      blue: "bg-transparent text-blue-500 border-2 border-blue-500  hover:text-blue-400",
-      red: "bg-transparent text-red-500 border-2 border-red-500  hover:text-red-400",
+      blue: "bg-transparent text-blue-500 border-2 border-blue-500  hover:opacity-70",
+      red: "bg-transparent text-red-500 border-2 border-red-500  hover:opacity-70",
       yellow:
-        "bg-transparent text-yellow-500 border-2 border-yellow-500  hover:text-yellow-400",
+        "bg-transparent text-yellow-500 border-2 border-yellow-500  hover:opacity-70",
     },
     size: {
       sm: "px-2 py-1 rounded text-sm gap-1",
@@ -61,6 +61,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     <button
       className={cn(buttonVariants({ color, modifier, size, className }), {
         "opacity-60 cursor-not-allowed": disabled,
+        "text-transparent": loading,
+        relative: loading,
       })}
       ref={ref}
       disabled
@@ -69,6 +71,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       {children}
       {loading ? (
         <Spinner
+          className="center"
           fill={cn({
             white: color,
             "rgb(234 179 8)": modifier === "yellow",
@@ -77,7 +80,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             black: color === "default",
           })}
         />
-      ) : null}
+      ) : undefined}
     </button>
   )
 );

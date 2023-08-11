@@ -10,15 +10,15 @@ const selectVariants = cva(
       color: {
         default:
           "bg-transparent border-2 border-black outline-none text-black hover:opacity-50",
-        blue: "bg-blue-500 text-white outline-default hover:bg-blue-400",
-        red: "bg-red-500 outline-destructive text-white hover:bg-red-400",
-        yellow: "bg-yellow-500  outline-success text-white hover:bg-yellow-400",
+        blue: "bg-blue-500 text-white outline-blue hover:bg-blue-400",
+        red: "bg-red-500 outline-red text-white hover:bg-red-400",
+        yellow: "bg-yellow-500  outline-yellow text-white hover:bg-yellow-400",
       },
-      outline: {
-        blue: "bg-transparent text-blue-500 outline-blue hover:text-blue-400",
-        red: "bg-transparent text-red-500 outline-red hover:text-red-400",
+      modifier: {
+        blue: "bg-transparent focus:outline-blue text-blue-500 border-2 border-blue-500 hover:text-blue-400",
+        red: "bg-transparent focus:outline-red text-red-500 border-2 border-red-500 hover:text-red-400",
         yellow:
-          "bg-transparent text-yellow-500 outline-yellow hover:text-yellow-400",
+          "bg-transparent focus:outline-yellow text-yellow-500 border-2 border-yellow-500 hover:text-yellow-400",
       },
       size: {
         sm: "px-2 py-1 rounded text-sm gap-1",
@@ -53,7 +53,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       className,
       children,
       size,
-      outline,
+      modifier,
       color,
       disabled,
       ...props
@@ -68,12 +68,12 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             selectVariants({
               size,
               color,
-              outline,
+              modifier,
               className,
             }),
             {
               "opactiy-600 cursor-not-allowed": disabled,
-              "text-red-500 border-red-500": error,
+              "text-red-700 border-red-700": error,
             }
           )}
           disabled={disabled}
@@ -81,7 +81,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         >
           {children}
         </select>
-        {error ? <div className="text-2xl text-red-500">Hata</div> : undefined}
+        {error ? <div className="text-2xl text-red-700">Hata</div> : undefined}
       </>
     );
   }
