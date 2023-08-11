@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  body,
+  #root {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .spinner_P7sC {
+    transform-origin: center;
+    animation: spinner_svv2 .75s infinite linear
+  }
+
+  @keyframes spinner_svv2 {
+    100% {
+      transform: rotate(360deg)
+    }
+  }
+}
+
+@layer utilities {
+  .outline-blue {
+    @apply outline-2 outline-blue-500 outline-offset-2
+  }
+
+  .outline-red {
+    @apply outline-2 outline-red-500 outline-offset-2
+  }
+
+  .outline-yellow {
+    @apply outline-2 outline-yellow-500 outline-offset-2
+  }
+
+  /* .loader {
+    position: relative;
+  }
+
+  .loader::before {
+    content: 'Loading..';
+    font-size: 2rem;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-49%, -49%);
+    z-index: 10;
+    position: absolute;
+  } */
+}
