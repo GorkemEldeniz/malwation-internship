@@ -255,3 +255,30 @@ Class Variance Authority(CVA)
 
 CVA, UI geliştirmenin daha eğlenceli yönlerine odaklanmanıza izin vererek bu acı noktaları ortadan kaldırmayı amaçlamaktadır.
 Type-safe UI components oluşturmak için CSS-in-TS mantığını kullanır.
+
+```bash
+  npm i class-variance-authority
+  pnpm i class-variance-authority
+  yarn add class-variance-authority
+```
+
+```js
+import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
+
+const buttonVariants = cva(["your", "base", "classes"], {
+	variants: {
+		intent: {
+			primary: ["your", "primary", "classes"],
+		},
+	},
+	defaultVariants: {
+		intent: "primary",
+	},
+});
+
+export interface ButtonVariants extends VariantProps<typeof buttonVariants> {}
+
+export const button = (variants: ButtonVariants) =>
+	twMerge(buttonVariants(variants));
+```
