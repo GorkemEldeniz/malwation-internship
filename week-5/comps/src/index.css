@@ -10,6 +10,14 @@
     min-height: 100vh;
   }
 
+  button {
+    border-color: currentColor;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+
   .spinner_P7sC {
     transform-origin: center;
     animation: spinner_svv2 .75s infinite linear

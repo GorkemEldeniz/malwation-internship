@@ -3,6 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fill: {
+        current: "currentColor",
+      },
+      colors: {
+        current: "currentColor",
+      },
       keyframes: {
         success: {
           "0%": { transform: "translateX(-10px)" },
