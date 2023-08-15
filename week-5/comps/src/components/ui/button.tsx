@@ -74,7 +74,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => (
     <button
-      className={cn(buttonVariants({ variant, modifier, size, className }), {})}
+      className={cn(buttonVariants({ variant, modifier, size, className }))}
       ref={ref}
       disabled
       {...props}
@@ -87,6 +87,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           // fill={cn({
           //   white: variant == "primary",
           //   black: variant === "default",
+          //   blue: modifier === "outline",
           // })}
         />
       ) : undefined}

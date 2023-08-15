@@ -10,12 +10,12 @@
     min-height: 100vh;
   }
 
-  button {
-    border-color: currentColor;
-  }
-
   svg {
     fill: currentColor;
+  }
+
+  button {
+    border-color: currentColor;
   }
 
   .spinner_P7sC {
@@ -50,21 +50,4 @@
   .outline-yellow {
     @apply outline-2 outline-yellow-500 outline-offset-2
   }
-
-  /* .loader {
-    position: relative;
-  }
-
-  .loader::before {
-    content: 'Loading..';
-    font-size: 2rem;
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-49%, -49%);
-    z-index: 10;
-    position: absolute;
-  } */
 }
